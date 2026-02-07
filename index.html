@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Obi Cubana Premium</title>
+<title>Obi Cubana Premium Hub</title>
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <style>
-:root {
+:root{
   --bg:#f8fafc;
   --card:#ffffff;
   --primary:#4f46e5;
@@ -15,7 +15,7 @@
   --gold:#b45309;
   --text:#1e293b;
   --muted:#64748b;
-  --shadow:0 10px 25px rgba(0,0,0,0.08);
+  --shadow:0 12px 30px rgba(0,0,0,.08);
 }
 
 *{box-sizing:border-box}
@@ -30,7 +30,33 @@ body{
 .app{
   max-width:480px;
   margin:auto;
-  padding:20px 18px 110px;
+  padding:20px 18px 120px;
+}
+
+/* PAGES */
+.page{display:none}
+.page.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
+
+/* HEADER */
+.header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:22px;
+}
+.header h2{margin:0;font-size:24px;font-weight:800}
+.header span{color:var(--primary)}
+
+.user-badge{
+  background:var(--primary-light);
+  color:var(--primary);
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+  display:flex;
+  gap:4px;
+  align-items:center;
 }
 
 /* WELCOME CARD */
@@ -42,7 +68,6 @@ body{
   margin-bottom:24px;
   position:relative;
 }
-
 .welcome-card::after{
   content:"👑";
   position:absolute;
@@ -51,47 +76,14 @@ body{
   font-size:90px;
   opacity:.08;
 }
-
 .welcome-card h3{
   margin:0 0 12px;
   color:var(--primary);
-  font-size:20px;
   display:flex;
-  align-items:center;
   gap:8px;
-}
-
-.welcome-card p{
-  font-size:14.5px;
-  line-height:1.8;
-}
-
-/* HEADER */
-.header{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:22px;
-}
-
-.header h2{
-  margin:0;
-  font-size:24px;
-  font-weight:800;
-}
-
-.header span{color:var(--primary)}
-
-.user-badge{
-  background:var(--primary-light);
-  color:var(--primary);
-  padding:6px 12px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:700;
-  display:flex;
   align-items:center;
-  gap:4px;
 }
+.welcome-card p{font-size:14.5px;line-height:1.8}
 
 /* STATS */
 .stats{
@@ -100,29 +92,17 @@ body{
   gap:16px;
   margin-bottom:26px;
 }
-
 .stat{
   background:var(--card);
   padding:20px;
   border-radius:20px;
   box-shadow:var(--shadow);
 }
-
-.stat p{
-  margin:0;
-  font-size:13px;
-  color:var(--muted);
-}
-
-.stat h3{
-  margin:8px 0 0;
-  font-size:20px;
-  font-weight:800;
-}
-
+.stat p{margin:0;font-size:13px;color:var(--muted)}
+.stat h3{margin-top:8px;font-size:20px;font-weight:800}
 .stat.gold h3{color:var(--gold)}
 
-/* PACKAGE CARDS */
+/* PACKAGES */
 .package{
   background:var(--card);
   padding:18px;
@@ -133,25 +113,65 @@ body{
   margin-bottom:14px;
   box-shadow:var(--shadow);
 }
-
 .badge{
-  font-size:12px;
-  font-weight:800;
   padding:6px 14px;
   border-radius:20px;
+  font-size:12px;
+  font-weight:800;
 }
-
 .live{background:#dcfce7;color:#15803d}
 .soon{background:#fef3c7;color:#b45309}
 
-/* PAGES */
-.page{display:none}
-.page.active{display:block;animation:fade .35s ease}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(10px)}
-  to{opacity:1;transform:none}
+/* ANNOUNCEMENT */
+.announcement-card{
+  background:var(--card);
+  padding:24px;
+  border-radius:26px;
+  box-shadow:var(--shadow);
+  margin-bottom:20px;
 }
+.announcement-text{
+  font-size:14.5px;
+  line-height:1.9;
+}
+.share-btn{
+  margin-top:18px;
+  width:100%;
+  background:#25D366;
+  color:#fff;
+  border:none;
+  padding:14px;
+  border-radius:14px;
+  font-weight:800;
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  align-items:center;
+}
+
+/* TASKS */
+.task-card{
+  background:var(--card);
+  padding:18px;
+  border-radius:22px;
+  display:flex;
+  gap:14px;
+  margin-bottom:14px;
+  box-shadow:var(--shadow);
+}
+.task-num{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:var(--primary-light);
+  color:var(--primary);
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.task-card h4{margin:0;font-size:15px}
+.task-card p{margin:4px 0 0;font-size:12px;color:var(--muted)}
 
 /* NAV */
 .bottom-nav{
@@ -162,24 +182,22 @@ body{
   height:76px;
   background:#fff;
   border-radius:26px;
-  box-shadow:0 15px 35px rgba(0,0,0,.12);
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
   display:flex;
   justify-content:space-around;
   align-items:center;
 }
-
 .nav-btn{
   background:none;
   border:none;
-  color:var(--muted);
   display:flex;
   flex-direction:column;
-  align-items:center;
   gap:4px;
+  align-items:center;
+  color:var(--muted);
   font-size:11px;
   font-weight:700;
 }
-
 .nav-btn.active{color:var(--primary)}
 </style>
 </head>
@@ -192,9 +210,9 @@ body{
 <div id="home" class="page active">
 
   <div class="welcome-card">
-    <h3><i data-lucide="crown" size="20"></i> Obi Cubana Premium Hub</h3>
+    <h3><i data-lucide="crown"></i> Obi Cubana Premium Hub</h3>
     <p>
-      Welcome to the official <b>Obi Cubana Premium Hub</b>.
+      Welcome to the official <b>Obi Cubana Premium Hub</b>.  
       This platform rewards loyalty with transparency.
       Every day, we open <b>10 Giveaway packages</b>.
       <br><br>
@@ -207,24 +225,15 @@ body{
 
   <div class="header">
     <h2>Hello,<br><span>Community 👑</span></h2>
-    <div class="user-badge">
-      <i data-lucide="shield-check" size="14"></i> Obi Cubana
-    </div>
+    <div class="user-badge"><i data-lucide="shield-check" size="14"></i> Obi Cubana</div>
   </div>
 
   <div class="stats">
-    <div class="stat gold">
-      <p>Today's Gift</p>
-      <h3>₦1,000,000</h3>
-    </div>
-    <div class="stat">
-      <p>Total Winners</p>
-      <h3>356</h3>
-    </div>
+    <div class="stat gold"><p>Today's Gift</p><h3>₦1,000,000</h3></div>
+    <div class="stat"><p>Total Winners</p><h3>356</h3></div>
   </div>
 
   <h3>Today's Packages (5)</h3>
-
   <div class="package"><span>₦100,000 per winner</span><span class="badge live">LIVE</span></div>
   <div class="package"><span>₦100,000 per winner</span><span class="badge live">LIVE</span></div>
   <div class="package"><span>₦100,000 per winner</span><span class="badge live">LIVE</span></div>
@@ -235,51 +244,68 @@ body{
 
 <!-- NEWS -->
 <div id="news" class="page">
-  <h2>Latest News 📢</h2>
-  <p>All announcements will appear here.</p>
+  <div class="header"><h2>Latest<br><span>News 📢</span></h2></div>
+
+  <div class="announcement-card">
+    <div class="announcement-text">
+      <b>~BIG ANNOUNCEMENT~ !</b><br><br>
+      I’ll be hosting a <b>MAJOR GIVEAWAY – 2nd February 2026</b>
+      exclusively for all my amazing supporters 🎉🎁<br><br>
+      This is my way of giving back and showing appreciation
+      for all the love you’ve shown me ❤️<br><br>
+      <b>Stay connected</b> and don’t miss my status updates 👀📲<br><br>
+      It’s real. It’s happening.<br>
+      <b>Let’s make it special ✨</b>
+    </div>
+
+    <button class="share-btn" onclick="shareToWhatsApp()">
+      <i data-lucide="share-2"></i> Share to Status
+    </button>
+  </div>
 </div>
 
 <!-- TASKS -->
 <div id="tasks" class="page">
-  <h2>Qualification Tasks ✅</h2>
-  <p>Complete all tasks to qualify.</p>
+  <div class="header"><h2>Qualification<br><span>Tasks ✅</span></h2></div>
+
+  <div class="task-card"><div class="task-num">1</div><div><h4>Join WhatsApp Group</h4><p>Receive daily giveaway alerts</p></div></div>
+  <div class="task-card"><div class="task-num">2</div><div><h4>Join Telegram Channel</h4><p>View verified payment proofs</p></div></div>
+  <div class="task-card"><div class="task-num">3</div><div><h4>Share to 10 Friends</h4><p>Boost your qualification rank</p></div></div>
+  <div class="task-card"><div class="task-num">4</div><div><h4>Daily Login</h4><p>Open the app every day</p></div></div>
+  <div class="task-card"><div class="task-num">5</div><div><h4>Enable Notifications</h4><p>Never miss live giveaways</p></div></div>
 </div>
 
 <!-- WINNERS -->
 <div id="winners" class="page">
-  <h2>Hall of Winners 🏆</h2>
-  <p>Verified winners list.</p>
+  <div class="header"><h2>Hall of<br><span>Winners 🏆</span></h2></div>
+  <p>Verified winners will appear here.</p>
 </div>
 
 </div>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav class="bottom-nav">
-  <button class="nav-btn active" onclick="openPage('home',this)">
-    <i data-lucide="home"></i><span>Home</span>
-  </button>
-  <button class="nav-btn" onclick="openPage('news',this)">
-    <i data-lucide="megaphone"></i><span>News</span>
-  </button>
-  <button class="nav-btn" onclick="openPage('tasks',this)">
-    <i data-lucide="list-checks"></i><span>Tasks</span>
-  </button>
-  <button class="nav-btn" onclick="openPage('winners',this)">
-    <i data-lucide="trophy"></i><span>Winners</span>
-  </button>
+  <button class="nav-btn active" onclick="openPage('home',this)"><i data-lucide="home"></i><span>Home</span></button>
+  <button class="nav-btn" onclick="openPage('news',this)"><i data-lucide="megaphone"></i><span>News</span></button>
+  <button class="nav-btn" onclick="openPage('tasks',this)"><i data-lucide="list-checks"></i><span>Tasks</span></button>
+  <button class="nav-btn" onclick="openPage('winners',this)"><i data-lucide="trophy"></i><span>Winners</span></button>
 </nav>
 
 <script>
 function openPage(id,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-
   window.scrollTo(0,0);
   lucide.createIcons();
 }
+
+function shareToWhatsApp(){
+  const text=encodeURIComponent("🚨 BIG ANNOUNCEMENT! Obi Cubana is hosting a MAJOR GIVEAWAY on 2nd February 2026 🎉");
+  window.open(`https://wa.me/?text=${text}`);
+}
+
 lucide.createIcons();
 </script>
 
