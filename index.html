@@ -20,59 +20,40 @@
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-body {
-  margin: 0;
-  background: var(--bg);
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  color: var(--text-main);
-}
-
+body { margin: 0; background: var(--bg); font-family: 'Segoe UI', Roboto, sans-serif; color: var(--text-main); }
 .app { max-width: 480px; margin: auto; padding: 24px 20px 100px; min-height: 100vh; }
 
-/* HEADER */
+/* HEADER & STATS */
 .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
-.header h2 { margin: 0; font-size: 24px; font-weight: 800; line-height: 1.2; }
+.header h2 { margin: 0; font-size: 24px; font-weight: 800; }
 .header span { color: var(--primary); }
-.user-badge { background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
-
-/* STATS GRID (Restored) */
 .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-.stat-card { background: var(--card); padding: 20px; border-radius: 20px; box-shadow: var(--shadow-sm); border: 1px solid rgba(255,255,255,0.7); }
-.stat-card p { margin: 0; font-size: 13px; color: var(--text-muted); font-weight: 500; }
-.stat-card h3 { margin: 8px 0 0; font-size: 20px; font-weight: 700; }
-.stat-card.gold h3 { color: var(--gold); }
+.stat-card { background: var(--card); padding: 20px; border-radius: 20px; box-shadow: var(--shadow-sm); }
+.stat-card h3 { margin: 8px 0 0; font-size: 20px; font-weight: 700; color: var(--gold); }
 
-/* GIVEAWAY SLOTS DESIGN (10 PLACES) */
-.giveaway-list { display: grid; gap: 12px; margin-top: 15px; }
-.giveaway-item {
-  background: var(--card); padding: 18px; border-radius: 20px; 
-  display: flex; justify-content: space-between; align-items: center;
-  box-shadow: var(--shadow-sm); border-left: 5px solid var(--primary);
+/* TASKS & GIVEAWAY LIST */
+.task-card, .giveaway-item {
+  background: var(--card); padding: 18px; border-radius: 20px; display: flex; 
+  align-items: center; gap: 15px; margin-bottom: 12px; box-shadow: var(--shadow-sm); cursor: pointer;
 }
-.giveaway-info h4 { margin: 0; font-size: 16px; }
-.giveaway-info p { margin: 4px 0 0; font-size: 12px; color: var(--text-muted); }
-.status-pill { font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 12px; text-transform: uppercase; }
+.task-num { background: var(--primary-light); color: var(--primary); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
+.status-pill { font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 12px; margin-left: auto; }
 .live { background: #dcfce7; color: #15803d; }
 .upcoming { background: #fef3c7; color: #b45309; }
 
-/* CARDS */
-.task-card { background: var(--card); padding: 18px; border-radius: 20px; display: flex; align-items: center; gap: 15px; margin-bottom: 12px; box-shadow: var(--shadow-sm); cursor: pointer; }
-.task-num { background: var(--primary-light); color: var(--primary); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
-
 /* MODAL */
-#taskModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
+#taskModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
 .modal-content { background: white; padding: 30px; border-radius: 28px; width: 100%; max-width: 400px; text-align: center; }
-.modal-btn { background: var(--primary); color: white; border: none; padding: 12px; border-radius: 12px; font-weight: 700; width: 100%; margin-top: 20px; }
+.modal-btn { background: var(--primary); color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 700; width: 100%; margin-top: 20px; }
 
 /* NAV */
-.bottom-nav { position: fixed; bottom: 20px; left: 20px; right: 20px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); height: 75px; display: flex; justify-content: space-around; align-items: center; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 1000; }
+.bottom-nav { position: fixed; bottom: 20px; left: 20px; right: 20px; background: white; height: 75px; display: flex; justify-content: space-around; align-items: center; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 1000; }
 .nav-btn { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex: 1; }
 .nav-btn.active { color: var(--primary); }
 .nav-btn span { font-size: 10px; font-weight: 700; }
 
 .page { display: none; }
-.page.active { display: block; animation: fadeIn 0.4s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.page.active { display: block; }
 </style>
 </head>
 <body>
@@ -80,63 +61,45 @@ body {
 <div class="app">
 
   <div id="home" class="page active">
-    <div class="header">
-      <h2>Hello,<br><span>Community 👑</span></h2>
-      <div class="user-badge"><i data-lucide="shield-check" size="14"></i> Obi Cubana</div>
-    </div>
-
+    <div class="header"><h2>Hello,<br><span>Community 👑</span></h2></div>
     <div class="stats-grid">
-      <div class="stat-card gold">
+      <div class="stat-card">
         <p>Today's Gift</p>
         <h3>₦100,000</h3>
       </div>
       <div class="stat-card">
-        <p>Total Winners</p>
+        <p>Winners</p>
         <h3>356</h3>
       </div>
     </div>
-
-    <h3 style="margin-bottom: 10px;">Today's Giveaway Slots (10)</h3>
-    <div class="giveaway-list" id="giveawayGrid">
-      </div>
+    <h3 style="margin-bottom:15px">Daily Giveaways (10 Slots)</h3>
+    <div id="giveawayGrid"></div>
   </div>
 
   <div id="news" class="page">
-    <div class="header"><h2>Latest<br><span>Announcements 📢</span></h2></div>
-    <div class="task-card">
-        <div class="task-num">!</div>
-        <div class="task-info"><h4>Server Maintenance</h4><p>Scheduled for 12:00 AM tonight.</p></div>
-    </div>
-    <div class="task-card">
-        <div class="task-num">!</div>
-        <div class="task-info"><h4>Winner Verification</h4><p>Ensure your details match your ID.</p></div>
-    </div>
+    <div class="header"><h2>Latest<br><span>News 📢</span></h2></div>
+    <div class="task-card"><h4>System Update</h4><p>Approvals now automated.</p></div>
+    <div class="task-card"><h4>Safety Alert</h4><p>Never share your OTP.</p></div>
   </div>
 
   <div id="tasks" class="page">
     <div class="header"><h2>Qualification<br><span>Tasks ✅</span></h2></div>
-    <div class="task-card" onclick="openModal('Join Community', 'Join WhatsApp & Telegram to qualify.')">
-        <div class="task-num">1</div>
-        <div class="task-info"><h4>Join Community</h4><p>Follow our social channels.</p></div>
-    </div>
-    <div class="task-card" onclick="openModal('Share Link', 'Share content to 50 friends for verification.')">
-        <div class="task-num">2</div>
-        <div class="task-info"><h4>Share Link</h4><p>Share with 50 friends.</p></div>
-    </div>
+    <div id="taskGrid"></div>
   </div>
 
   <div id="winners" class="page">
     <div class="header"><h2>Hall of<br><span>Winners 🏆</span></h2></div>
-    <div id="winnerDisplay"></div>
+    <div class="task-card"><div><h4>Chinedu Okafor</h4><p>Lagos</p></div><div style="margin-left:auto; color:var(--gold); font-weight:700">₦100k</div></div>
+    <div class="task-card"><div><h4>Aisha Bello</h4><p>Abuja</p></div><div style="margin-left:auto; color:var(--gold); font-weight:700">₦50k</div></div>
   </div>
 
 </div>
 
 <div id="taskModal" onclick="closeModal()">
   <div class="modal-content" onclick="event.stopPropagation()">
-    <h3 id="mTitle">Task Detail</h3>
-    <p id="mDesc" style="color:var(--text-muted); font-size:14px; margin-top:10px;"></p>
-    <button class="modal-btn" onclick="closeModal()">Close</button>
+    <h3 id="mTitle"></h3>
+    <p id="mDesc" style="color:var(--text-muted); line-height:1.5; margin-top:10px;"></p>
+    <button class="modal-btn" onclick="closeModal()">I Understand</button>
   </div>
 </div>
 
@@ -150,21 +113,39 @@ body {
 <script>
 lucide.createIcons();
 
-// Logic to show 10 Giveaways per day
+// Tasks Data
+const taskData = [
+  { t: "Join WhatsApp", d: "Join the official community group to receive live updates." },
+  { t: "Join Telegram", d: "Subscribe to our channel for exclusive winner announcements." },
+  { t: "Share to 50 Friends", d: "Forward the invite link to 50 friends. We will verify via names." },
+  { t: "Daily Check-in", d: "Open this app for 3 consecutive days to prove activity." },
+  { t: "Watch Tutorial", d: "Watch the 60-second video on how to claim your gift safely." },
+  { t: "Submit Username", d: "Enter your Telegram/WhatsApp username for verification." },
+  { t: "Verify Phone", d: "Ensure your registered number matches your payment account." },
+  { t: "Security Setup", d: "Enable 2FA on your social accounts for safety." },
+  { t: "Profile Completion", d: "Upload a profile picture and fill out your location." },
+  { t: "Final Review", d: "Click to submit all completed tasks for final approval." }
+];
+
+const taskGrid = document.getElementById('taskGrid');
+taskData.forEach((task, i) => {
+  taskGrid.innerHTML += `
+    <div class="task-card" onclick="openModal('${task.t}', '${task.d}')">
+      <div class="task-num">${i+1}</div>
+      <div><h4>${task.t}</h4><p>Click to read more</p></div>
+      <i data-lucide="chevron-right" size="18" style="margin-left:auto; color:#cbd5e1"></i>
+    </div>`;
+});
+
+// Giveaway Slots (10)
 const giveawayGrid = document.getElementById('giveawayGrid');
 for (let i = 1; i <= 10; i++) {
-    const isLive = i <= 3; // First 3 are live
-    giveawayGrid.innerHTML += `
-        <div class="giveaway-item">
-            <div class="giveaway-info">
-                <h4>Giveaway Place #${i}</h4>
-                <p>₦10,000 per slot • Daily</p>
-            </div>
-            <span class="status-pill ${isLive ? 'live' : 'upcoming'}">
-                ${isLive ? 'Live Now' : 'Starts Soon'}
-            </span>
-        </div>
-    `;
+  const isLive = i <= 3;
+  giveawayGrid.innerHTML += `
+    <div class="giveaway-item">
+      <div><h4>Slot #${i}</h4><p>₦10,000 Daily Slot</p></div>
+      <span class="status-pill ${isLive ? 'live' : 'upcoming'}">${isLive ? 'LIVE' : 'SOON'}</span>
+    </div>`;
 }
 
 function openPage(id, btn) {
@@ -178,10 +159,10 @@ function openModal(t, d) {
   document.getElementById('mTitle').innerText = t;
   document.getElementById('mDesc').innerText = d;
   document.getElementById('taskModal').style.display = 'flex';
+  lucide.createIcons();
 }
 
 function closeModal() { document.getElementById('taskModal').style.display = 'none'; }
 </script>
-
 </body>
 </html>
