@@ -18,226 +18,200 @@
   --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
 }
 
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 body { 
   margin: 0; 
   background: var(--bg); 
   font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; 
   color: var(--text-main);
-  line-height: 1.5;
 }
 
-.app { max-width: 480px; margin: auto; padding: 24px 20px 100px; min-height: 100vh; }
+.app { max-width: 480px; margin: auto; padding: 24px 20px 110px; min-height: 100vh; }
 
-/* HEADER & STATS */
-.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
-.header h2 { margin: 0; font-size: 24px; font-weight: 800; line-height: 1.2; }
+/* WELCOME CARD */
+.welcome-card {
+  background: linear-gradient(135deg, #eef2ff, #ffffff);
+  border-radius: 26px;
+  padding: 26px;
+  margin-bottom: 26px;
+  box-shadow: 0 15px 30px rgba(79,70,229,0.12);
+  border: 1px solid rgba(79,70,229,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-card::after {
+  content: "👑";
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  font-size: 90px;
+  opacity: 0.08;
+}
+
+.welcome-card h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.welcome-card p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.85;
+}
+
+.highlight { color: var(--gold); font-weight: 700; }
+
+/* HEADER */
+.header { display: flex; justify-content: space-between; margin-bottom: 22px; }
+.header h2 { margin: 0; font-size: 24px; font-weight: 800; }
 .header span { color: var(--primary); }
-.user-badge { background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
 
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-.stat-card { background: var(--card); padding: 20px; border-radius: 20px; box-shadow: var(--shadow-sm); border: 1px solid rgba(255,255,255,0.7); }
-.stat-card p { margin: 0; font-size: 13px; color: var(--text-muted); font-weight: 500; }
-.stat-card h3 { margin: 8px 0 0; font-size: 20px; font-weight: 700; }
+.user-badge {
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* STATS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.stat-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-card p { margin: 0; font-size: 13px; color: var(--text-muted); }
+.stat-card h3 { margin: 8px 0 0; font-size: 20px; }
 .stat-card.gold h3 { color: var(--gold); }
 
-/* NEWS PAGE STYLING */
-.announcement-card {
-  background: white; padding: 24px; border-radius: 24px; 
-  border: 2px solid var(--primary-light); box-shadow: 0 10px 20px rgba(79,70,229,0.08);
-  margin-bottom: 20px; position: relative;
-}
-.announcement-text { font-size: 15px; line-height: 1.7; white-space: pre-wrap; }
-.share-btn {
-  margin-top: 15px; background: #25D366; color: white; border: none;
-  padding: 12px; border-radius: 12px; font-weight: 700; display: flex;
-  align-items: center; gap: 8px; cursor: pointer; width: 100%; justify-content: center;
-}
-.news-item {
-  background: var(--card); padding: 16px; border-radius: 18px; margin-bottom: 12px;
-  display: flex; gap: 12px; box-shadow: var(--shadow-sm);
+/* ITEMS */
+.item-card {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
 }
 
-/* CARDS (Tasks, Giveaways, Winners) */
-.item-card {
-  background: var(--card); padding: 18px; border-radius: 20px; display: flex; 
-  align-items: center; gap: 15px; margin-bottom: 12px; box-shadow: var(--shadow-sm); cursor: pointer;
+.status-pill {
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-left: auto;
 }
-.circle-num { 
-  background: var(--primary-light); color: var(--primary); width: 34px; height: 34px; 
-  border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; 
-}
-.status-pill { font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 12px; margin-left: auto; }
+
 .live { background: #dcfce7; color: #15803d; }
 .upcoming { background: #fef3c7; color: #b45309; }
 
-/* MODAL */
-#taskModal { 
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); 
-  display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; 
-}
-.modal-content { background: white; padding: 30px; border-radius: 28px; width: 100%; max-width: 400px; text-align: center; }
-.modal-btn { background: var(--primary); color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 700; width: 100%; margin-top: 20px; }
-
 /* NAV */
-.bottom-nav { 
-  position: fixed; bottom: 20px; left: 20px; right: 20px; background: rgba(255,255,255,0.95); 
-  backdrop-filter: blur(10px); height: 75px; display: flex; justify-content: space-around; 
-  align-items: center; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 1000; 
+.bottom-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  height: 75px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
-.nav-btn { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex: 1; }
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
 .nav-btn.active { color: var(--primary); }
 .nav-btn span { font-size: 10px; font-weight: 700; }
 
 .page { display: none; }
-.page.active { display: block; animation: fadeIn 0.4s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.page.active { display: block; animation: fade 0.4s ease; }
+@keyframes fade { from { opacity:0; transform:translateY(10px);} to {opacity:1;} }
 </style>
 </head>
-<body>
 
+<body>
 <div class="app">
 
-  <div id="home" class="page active">
-    <div class="header">
-      <h2>Hello,<br><span>Community 👑</span></h2>
-      <div class="user-badge"><i data-lucide="shield-check" size="14"></i> Obi Cubana</div>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-card gold"><p>Today's Gift</p><h3>₦1000,000</h3></div>
-      <div class="stat-card"><p>Total Winners</p><h3>356</h3></div>
-    </div>
-    <h3 style="margin-bottom:15px">Today'packages (5)</h3>
-    <div id="giveawayGrid"></div>
+<!-- HOME -->
+<div id="home" class="page active">
+
+  <!-- WELCOME CARD -->
+  <div class="welcome-card">
+    <h3><i data-lucide="crown" size="20"></i> Obi Cubana Premium Hub</h3>
+    <p>
+      Welcome to the <span class="highlight">official Obi Cubana Premium Hub</span>.  
+      This platform rewards loyalty with transparency.
+      Every day, we open <strong>10 Giveaway packages</strong> for supporters who stay active.
+      <br><br>
+      It’s not just about luck — it’s about activity.
+      Complete your tasks, stay active in the news feed, and your reward is just a click away.
+      <br><br>
+      <strong>Let’s build together 🚀</strong>
+    </p>
   </div>
 
-  <div id="news" class="page">
-    <div class="header"><h2>Latest<br><span>News 📢</span></h2></div>
-    
-    <div class="announcement-card">
-      <div class="announcement-text">
-<strong>*~BIG ANNOUNCEMENT~ !*</strong>
-I’ll be hosting a MAJOR <strong>*GIVEAWAY  – 12 February 2026 – exclusively for all my amazing supporters 🎉🎁*</strong>
-*This is my way of giving back and showing appreciation for all the love you’ve shown me ❤️*
-<strong>*Make sure you stay connected and don’t miss my status updates 👀📲*</strong>
-*You seriously don’t want to miss this one!.*
-*It’s real. It’s happening*
-*Let’s make it special ✨*
-      </div>
-      <button class="share-btn" onclick="shareToWhatsApp()">
-        <i data-lucide="share-2" size="18"></i> Share to Status
-      </button>
-    </div>
-
-    <div class="news-item">
-      <div class="circle-num">!</div>
-      <div><h4>Verification Update</h4><p>We've added 5 new moderators to speed up gift approvals.</p></div>
-    </div>
-    <div class="news-item">
-      <div class="circle-num">!</div>
-      <div><h4>New Security Mode</h4><p>Always check for the "Obi Cubana" badge before chatting.</p></div>
-    </div>
-    <div class="news-item">
-      <div class="circle-num">!</div>
-      <div><h4>Share Contest</h4><p>Top 3 sharers today get an extra ₦20,000 bonus.</p></div>
-    </div>
+  <div class="header">
+    <h2>Hello,<br><span>Community 👑</span></h2>
+    <div class="user-badge"><i data-lucide="shield-check" size="14"></i> Obi Cubana</div>
   </div>
 
-  <div id="tasks" class="page">
-    <div class="header"><h2>Qualification<br><span>Tasks ✅</span></h2></div>
-    <div id="taskGrid"></div>
+  <div class="stats-grid">
+    <div class="stat-card gold"><p>Today's Gift</p><h3>₦1,000,000</h3></div>
+    <div class="stat-card"><p>Total Winners</p><h3>356</h3></div>
   </div>
 
-  <div id="winners" class="page">
-    <div class="header"><h2>Hall of<br><span>Winners 🏆</span></h2></div>
-    <div id="winnerGrid"></div>
-  </div>
+  <h3>Today's Packages (5)</h3>
+  <div class="item-card"><p>₦100,000 per winner</p><span class="status-pill live">LIVE</span></div>
+  <div class="item-card"><p>₦100,000 per winner</p><span class="status-pill live">LIVE</span></div>
+  <div class="item-card"><p>₦100,000 per winner</p><span class="status-pill live">LIVE</span></div>
+  <div class="item-card"><p>₦100,000 per winner</p><span class="status-pill upcoming">SOON</span></div>
+  <div class="item-card"><p>₦100,000 per winner</p><span class="status-pill upcoming">SOON</span></div>
 
 </div>
-
-<div id="taskModal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <h3 id="mTitle"></h3>
-    <p id="mDesc" style="color:var(--text-muted); font-size:14px; margin-top:10px;"></p>
-    <button class="modal-btn" onclick="closeModal()">Got it</button>
-  </div>
 </div>
 
 <nav class="bottom-nav">
-  <button class="nav-btn active" onclick="openPage('home', this)"><i data-lucide="home"></i><span>Home</span></button>
-  <button class="nav-btn" onclick="openPage('news', this)"><i data-lucide="megaphone"></i><span>News</span></button>
-  <button class="nav-btn" onclick="openPage('tasks', this)"><i data-lucide="list-checks"></i><span>Tasks</span></button>
-  <button class="nav-btn" onclick="openPage('winners', this)"><i data-lucide="trophy"></i><span>Winners</span></button>
+  <button class="nav-btn active"><i data-lucide="home"></i><span>Home</span></button>
+  <button class="nav-btn"><i data-lucide="megaphone"></i><span>News</span></button>
+  <button class="nav-btn"><i data-lucide="list-checks"></i><span>Tasks</span></button>
+  <button class="nav-btn"><i data-lucide="trophy"></i><span>Winners</span></button>
 </nav>
 
 <script>
 lucide.createIcons();
-
-// Data Configuration
-const tasks = [
-  { t: "Join WhatsApp", d: "Join our official group for real-time daily gift alerts." },
-  { t: "Join Telegram", d: "Subscribe to our channel to see verified payment proofs." },
-  { t: "Share to 50 Friends", d: "Forward the community link to 50 friends to boost your rank." },
-  { t: "Daily Login", d: "Open the app every morning to qualify for the first 3 slots." },
-  { t: "Watch Tutorial", d: "Learn how to link your bank account for automatic payments." },
-  { t: "Verify Identity", d: "Submit your username so we can track your 50 shares." },
-  { t: "Enable Alerts", d: "Turn on notifications to never miss a live giveaway session." },
-  { t: "Safety Quiz", d: "Pass a quick 2-question quiz on how to stay safe from scammers." },
-  { t: "Update Profile", d: "Ensure your phone number is correct in your profile settings." },
-  { t: "Final Submission", d: "Confirm all 10 tasks are done to move to the 'Pending' list." }
-];
-
-const winners = [
-  { n: "Chinedu Okafor", l: "Lagos", a: "100k" },
-  { n: "Aisha Bello", l: "Abuja", a: "50k" },
-  { n: "Samuel Adeyemi", l: "Ibadan", a: "75k" },
-  { n: "Blessing Okon", l: "PH City", a: "100k" },
-  { n: "Musa Ibrahim", l: "Kano", a: "25k" },
-  { n: "Emeka Nwosu", l: "Enugu", a: "50k" },
-  { n: "Tunde Bakare", l: "Ogun", a: "100k" },
-  { n: "Chioma Adeleke", l: "Edo", a: "75k" }
-];
-
-// Builders
-const taskGrid = document.getElementById('taskGrid');
-tasks.forEach((task, i) => {
-  taskGrid.innerHTML += `<div class="item-card" onclick="openModal('${task.t}', '${task.d}')"><div class="circle-num">${i+1}</div><div><h4>${task.t}</h4><p>Details inside</p></div><i data-lucide="chevron-right" size="18" style="margin-left:auto;color:#cbd5e1"></i></div>`;
-});
-
-const giveawayGrid = document.getElementById('giveawayGrid');
-for (let i = 1; i <= 5; i++) {
-  const isLive = i <= 3;
-  giveawayGrid.innerHTML += `<div class="item-card"><div><h4></h4><p>₦100,000 for each winner </p></div><span class="status-pill ${isLive ? 'live' : 'upcoming'}">${isLive ? 'LIVE' : 'SOON'}</span></div>`;
-}
-
-const winnerGrid = document.getElementById('winnerGrid');
-winners.forEach(w => {
-  winnerGrid.innerHTML += `<div class="item-card"><div><h4>${w.n}</h4><p>${w.l}</p></div><div style="margin-left:auto;color:var(--gold);font-weight:800">₦${w.a}</div></div>`;
-});
-
-// App Logic
-function openPage(id, btn) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  window.scrollTo(0,0);
-}
-
-function openModal(t, d) {
-  document.getElementById('mTitle').innerText = t;
-  document.getElementById('mDesc').innerText = d;
-  document.getElementById('taskModal').style.display = 'flex';
-  lucide.createIcons();
-}
-
-function closeModal() { document.getElementById('taskModal').style.display = 'none'; }
-
-function shareToWhatsApp() {
-  const text = encodeURIComponent("🚨 BIG ANNOUNCEMENT!\nObi Cubana is hosting a MAJOR GIVEAWAY tomorrow morning!\nJoin here to participate: [https://wa.me/qr/ZLPFANCDZN5ZP1]");
-  window.open(`https://wa.me/?text=${text}`);
-}
 </script>
 </body>
 </html>
