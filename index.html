@@ -31,6 +31,36 @@ body { margin: 0; background: var(--bg); font-family: 'Segoe UI', Roboto, sans-s
 .stat-card { background: var(--card); padding: 20px; border-radius: 20px; box-shadow: var(--shadow-sm); }
 .stat-card h3 { margin: 8px 0 0; font-size: 20px; font-weight: 700; color: var(--gold); }
 
+/* NEWS / ANNOUNCEMENT STYLING */
+.announcement-card {
+  background: white;
+  padding: 24px;
+  border-radius: 24px;
+  border: 2px solid var(--primary-light);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.08);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.announcement-card::before {
+  content: "HOT";
+  position: absolute;
+  top: 12px;
+  right: -20px;
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 4px 25px;
+  transform: rotate(45deg);
+}
+.announcement-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-main);
+  white-space: pre-wrap; /* Maintains your line breaks */
+}
+
 /* TASKS & GIVEAWAY LIST */
 .task-card, .giveaway-item {
   background: var(--card); padding: 18px; border-radius: 20px; display: flex; 
@@ -78,8 +108,23 @@ body { margin: 0; background: var(--bg); font-family: 'Segoe UI', Roboto, sans-s
 
   <div id="news" class="page">
     <div class="header"><h2>Latest<br><span>News 📢</span></h2></div>
-    <div class="task-card"><h4>System Update</h4><p>Approvals now automated.</p></div>
-    <div class="task-card"><h4>Safety Alert</h4><p>Never share your OTP.</p></div>
+    
+    <div class="announcement-card">
+      <div class="announcement-text">
+<strong>*~BIG ANNOUNCEMENT~ !*</strong>
+I’ll be hosting a MAJOR <strong>*GIVEAWAY tomorrow morning – 2sec February 2026 – exclusively for all my amazing supporters 🎉🎁*</strong>
+*This is my way of giving back and showing appreciation for all the love you’ve shown me ❤️*
+<strong>*Make sure you stay connected and don’t miss my status updates 👀📲*</strong>
+*You seriously don’t want to miss this one!.*
+*It’s real. It’s happening*
+*Let’s make it special ✨*
+      </div>
+    </div>
+
+    <div class="task-card">
+        <div class="task-num">!</div>
+        <div><h4>Previous Update</h4><p>Verification process is now 2x faster.</p></div>
+    </div>
   </div>
 
   <div id="tasks" class="page">
@@ -89,8 +134,7 @@ body { margin: 0; background: var(--bg); font-family: 'Segoe UI', Roboto, sans-s
 
   <div id="winners" class="page">
     <div class="header"><h2>Hall of<br><span>Winners 🏆</span></h2></div>
-    <div class="task-card"><div><h4>Chinedu Okafor</h4><p>Lagos</p></div><div style="margin-left:auto; color:var(--gold); font-weight:700">₦100k</div></div>
-    <div class="task-card"><div><h4>Aisha Bello</h4><p>Abuja</p></div><div style="margin-left:auto; color:var(--gold); font-weight:700">₦50k</div></div>
+    <div id="winnerGrid"></div>
   </div>
 
 </div>
@@ -153,6 +197,7 @@ function openPage(id, btn) {
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  window.scrollTo(0,0);
 }
 
 function openModal(t, d) {
