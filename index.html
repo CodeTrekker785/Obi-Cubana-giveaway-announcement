@@ -208,7 +208,7 @@ tasks.forEach((task, i) => {
 const giveawayGrid = document.getElementById('giveawayGrid');
 for (let i = 1; i <= 5; i++) {
   const isLive = i <= 3;
-  giveawayGrid.innerHTML += `<div class="item-card"><div><h4></h4><p>₦100,000 by reward </p></div><span class="status-pill ${isLive ? 'live' : 'upcoming'}">${isLive ? 'LIVE' : 'SOON'}</span></div>`;
+  giveawayGrid.innerHTML += `<div class="item-card"><div><h4></h4><p>₦100,000 for each winner </p></div><span class="status-pill ${isLive ? 'live' : 'upcoming'}">${isLive ? 'LIVE' : 'SOON'}</span></div>`;
 }
 
 const winnerGrid = document.getElementById('winnerGrid');
