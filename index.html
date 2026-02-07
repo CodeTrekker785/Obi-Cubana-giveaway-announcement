@@ -18,10 +18,7 @@
   --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
 }
 
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 body {
   margin: 0;
@@ -30,126 +27,36 @@ body {
   color: var(--text-main);
 }
 
-.app {
-  max-width: 480px;
-  margin: auto;
-  padding: 24px 20px 100px;
-}
+.app { max-width: 480px; margin: auto; padding: 24px 20px 100px; }
 
 /* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 24px;
-}
-
-.header h2 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 800;
-  line-height: 1.2;
-}
-
+.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+.header h2 { margin: 0; font-size: 24px; font-weight: 800; line-height: 1.2; }
 .header span { color: var(--primary); }
 
-.user-badge {
-  background: var(--primary-light);
-  color: var(--primary);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
+/* TASK CARD STYLING */
+.task-container { display: grid; gap: 16px; }
 
-/* SEARCH */
-.search-container {
-  position: relative;
-  margin-bottom: 24px;
-}
-
-.search-container input {
-  width: 100%;
-  padding: 14px 16px 14px 44px;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  background: var(--card);
-  font-size: 15px;
-  outline: none;
-  box-shadow: var(--shadow-sm);
-}
-
-.search-icon {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-}
-
-/* RESTORED STATS GRID */
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.stat-card {
+.task-card {
   background: var(--card);
   padding: 20px;
   border-radius: 20px;
-  box-shadow: var(--shadow-sm);
-}
-
-.stat-card p { margin: 0; font-size: 13px; color: var(--text-muted); font-weight: 500; }
-.stat-card h3 { margin: 8px 0 0; font-size: 20px; font-weight: 700; }
-.stat-card.gold h3 { color: var(--gold); }
-
-/* PROMO CARD */
-.promo-card {
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  color: white;
-  padding: 28px;
-  border-radius: 24px;
-  box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.2);
-  margin-bottom: 24px;
-}
-
-.timer-box {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  border-radius: 14px;
-  font-family: monospace;
-  font-size: 26px;
-  font-weight: 700;
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-/* TASKS */
-.task-item {
-  background: var(--card);
-  padding: 16px;
-  border-radius: 18px;
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 12px;
+  gap: 16px;
   box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  border: 1px solid transparent;
 }
+
+.task-card:active { transform: scale(0.98); background: #f1f5f9; }
 
 .task-number {
   background: var(--primary-light);
   color: var(--primary);
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -158,164 +65,120 @@ body {
   flex-shrink: 0;
 }
 
+.task-info { flex-grow: 1; }
+.task-info h4 { margin: 0; font-size: 16px; font-weight: 700; color: var(--text-main); }
+.task-info p { margin: 4px 0 0; font-size: 13px; color: var(--text-muted); }
+
 /* NAVIGATION */
 .bottom-nav {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(15px);
-  height: 70px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  border: 1px solid rgba(255,255,255,0.5);
-  z-index: 1000;
+  position: fixed; bottom: 20px; left: 20px; right: 20px;
+  background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px);
+  height: 70px; display: flex; justify-content: space-around; align-items: center;
+  border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.5); z-index: 1000;
 }
 
 .nav-btn { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
 .nav-btn.active { color: var(--primary); }
 .nav-btn span { font-size: 11px; font-weight: 700; }
 
-.page { display: none; animation: fadeIn 0.4s ease; }
-.page.active { display: block; }
+.page { display: none; }
+.page.active { display: block; animation: fadeIn 0.4s ease; }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.winner-row {
-  background: var(--card);
-  padding: 16px;
-  border-radius: 16px;
-  margin-bottom: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: var(--shadow-sm);
-}
-
-.winner-amt { color: var(--gold); font-weight: 700; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
-
 <body>
 
 <div class="app">
 
-  <div id="home" class="page active">
+  <div id="tasks" class="page active">
     <div class="header">
-      <h2>Hello,<br><span>Community 👑</span></h2>
-      <div class="user-badge"><i data-lucide="shield-check" size="14"></i> Obi Cubana</div>
+      <h2>Qualification<br><span>Tasks ✅</span></h2>
     </div>
 
-    <div class="search-container">
-      <i data-lucide="search" class="search-icon" size="20"></i>
-      <input type="text" placeholder="Search announcements...">
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat-card gold">
-        <p>Today's Gift</p>
-        <h3>₦100,000</h3>
+    <div class="task-container">
+      <div class="task-card" onclick="showTaskDetails('Join Community', 'You must join both our Official WhatsApp group and Telegram channel to be eligible for the daily gift.')">
+        <div class="task-number">1</div>
+        <div class="task-info">
+          <h4>Join Community</h4>
+          <p>Follow our social channels.</p>
+        </div>
+        <i data-lucide="chevron-right" size="18" color="#64748b"></i>
       </div>
-      <div class="stat-card">
-        <p>Total Winners</p>
-        <h3>356</h3>
+
+      <div class="task-card" onclick="showTaskDetails('Share Link', 'Copy your unique referral link and share it with at least 5 friends. They must join the community for your task to be marked complete.')">
+        <div class="task-number">2</div>
+        <div class="task-info">
+          <h4>Share Link</h4>
+          <p>Share with 5 friends.</p>
+        </div>
+        <i data-lucide="chevron-right" size="18" color="#64748b"></i>
       </div>
-    </div>
 
-    <div class="promo-card">
-      <h3>Daily Appreciation</h3>
-      <p>Celebrating excellence & gratitude</p>
-      <div class="timer-box">
-        <i data-lucide="clock" size="24"></i>
-        <span id="timer">23:58:46</span>
+      <div class="task-card" onclick="showTaskDetails('Submit Info', 'Fill out the verification form with your username and registered phone number so our team can check your progress.')">
+        <div class="task-number">3</div>
+        <div class="task-info">
+          <h4>Submit Info</h4>
+          <p>Verify your participation.</p>
+        </div>
+        <i data-lucide="chevron-right" size="18" color="#64748b"></i>
       </div>
-    </div>
 
-    <div style="display:grid; gap:12px;">
-      <a href="https://wa.me/qr/ZLPFANCDZN5ZP1" target="_blank" style="background:white; padding:18px; border-radius:18px; display:flex; justify-content:space-between; align-items:center; text-decoration:none; box-shadow:var(--shadow-sm);">
-        <div style="display:flex;align-items:center;gap:12px;font-weight:600;color:var(--text-main)"><i data-lucide="message-circle" color="#25D366"></i><span>WhatsApp</span></div>
-        <div style="background:var(--primary); color:#fff; padding:8px 20px; border-radius:12px; font-size:13px; font-weight:700;">Join</div>
-      </a>
-      <a href="https://t.me/Cubana_giveaway" target="_blank" style="background:white; padding:18px; border-radius:18px; display:flex; justify-content:space-between; align-items:center; text-decoration:none; box-shadow:var(--shadow-sm);">
-        <div style="display:flex;align-items:center;gap:12px;font-weight:600;color:var(--text-main)"><i data-lucide="send" color="#0088cc"></i><span>Telegram</span></div>
-        <div style="background:var(--primary); color:#fff; padding:8px 20px; border-radius:12px; font-size:13px; font-weight:700;">Join</div>
-      </a>
-    </div>
-  </div>
+      <div class="task-card" onclick="showTaskDetails('Watch Tutorial', 'Watch the 60-second introduction video to fully understand how the community rewards system works.')">
+        <div class="task-number">4</div>
+        <div class="task-info">
+          <h4>Watch Tutorial</h4>
+          <p>Learn how to claim rewards.</p>
+        </div>
+        <i data-lucide="chevron-right" size="18" color="#64748b"></i>
+      </div>
 
-  <div id="tasks" class="page">
-    <div class="header"><h2>Qualification<br><span>Tasks ✅</span></h2></div>
-    <div class="task-item"><div class="task-number">1</div><div><h4>Join Community</h4><p>Follow our social channels.</p></div></div>
-    <div class="task-item"><div class="task-number">2</div><div><h4>Share Link</h4><p>Share with 5 friends.</p></div></div>
-    <div class="task-item"><div class="task-number">3</div><div><h4>Submit Info</h4><p>Verify your participation.</p></div></div>
-  </div>
+      <div class="task-card" onclick="showTaskDetails('Daily Check-in', 'Open the app daily for 3 consecutive days to show you are an active member of the Obi Cubana community.')">
+        <div class="task-number">5</div>
+        <div class="task-info">
+          <h4>Daily Check-in</h4>
+          <p>Stay active for 3 days.</p>
+        </div>
+        <i data-lucide="chevron-right" size="18" color="#64748b"></i>
+      </div>
 
-  <div id="winners" class="page">
-    <div class="header"><h2>Hall of<br><span>Winners 🏆</span></h2></div>
-    
-    <div class="winner-row">
-      <div><h4 style="margin:0">Chinedu Okafor</h4><p style="margin:4px 0 0;font-size:12px;color:var(--text-muted)">Lagos • Just now</p></div>
-      <div class="winner-amt">₦100,000</div>
-    </div>
-
-    <div class="winner-row">
-      <div><h4 style="margin:0">Aisha Bello</h4><p style="margin:4px 0 0;font-size:12px;color:var(--text-muted)">Abuja • 15m ago</p></div>
-      <div class="winner-amt">₦50,000</div>
-    </div>
-
-    <div class="winner-row">
-      <div><h4 style="margin:0">Samuel Adeyemi</h4><p style="margin:4px 0 0;font-size:12px;color:var(--text-muted)">Ibadan • 1h ago</p></div>
-      <div class="winner-amt">₦75,000</div>
-    </div>
-
-    <div class="winner-row">
-      <div><h4 style="margin:0">Blessing Okon</h4><p style="margin:4px 0 0;font-size:12px;color:var(--text-muted)">Port Harcourt • 3h ago</p></div>
-      <div class="winner-amt">₦100,000</div>
-    </div>
-
-    <div class="winner-row">
-      <div><h4 style="margin:0">Musa Ibrahim</h4><p style="margin:4px 0 0;font-size:12px;color:var(--text-muted)">Kano • 5h ago</p></div>
-      <div class="winner-amt">₦25,000</div>
-    </div>
-
-    <div class="winner-row">
-      <div><h4 style="margin:0">Emeka Nwosu</h4><p style="margin:4px 0 0;font-size:12px;color:var(--text-muted)">Enugu • 8h ago</p></div>
-      <div class="winner-amt">₦50,000</div>
+      <div class="task-card" onclick="showTaskDetails('Account Security', 'Enable two-factor authentication on your Telegram and WhatsApp to protect your rewards.')">
+        <div class="task-number">6</div>
+        <div class="task-info">
+          <h4>Account Security</h4>
+          <p>Secure your profile.</p>
+        </div>
+        <i data-lucide="chevron-right" size="18" color="#64748b"></i>
+      </div>
     </div>
   </div>
 
 </div>
 
 <nav class="bottom-nav">
-  <button class="nav-btn active" onclick="openPage('home', this)"><i data-lucide="home"></i><span>Home</span></button>
-  <button class="nav-btn" onclick="openPage('tasks', this)"><i data-lucide="list-checks"></i><span>Tasks</span></button>
-  <button class="nav-btn" onclick="openPage('winners', this)"><i data-lucide="trophy"></i><span>Winners</span></button>
+  <button class="nav-btn" onclick="location.href='index.html'">
+    <i data-lucide="home"></i>
+    <span>Home</span>
+  </button>
+  <button class="nav-btn active">
+    <i data-lucide="list-checks"></i>
+    <span>Tasks</span>
+  </button>
+  <button class="nav-btn">
+    <i data-lucide="trophy"></i>
+    <span>Winners</span>
+  </button>
 </nav>
 
 <script>
 lucide.createIcons();
-function openPage(id, btn) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  window.scrollTo(0,0);
+
+// Function to handle the clickable task cards
+function showTaskDetails(title, description) {
+  alert(title + "\n\n" + description);
+  // In a real app, you could replace alert with a modal or a new page transition
 }
-let s = 86326;
-function updateTimer() {
-  let h=Math.floor(s/3600), m=Math.floor((s%3600)/60), x=s%60;
-  document.getElementById("timer").textContent = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${x.toString().padStart(2,'0')}`;
-  if(s>0)s--;
-}
-setInterval(updateTimer, 1000);
-updateTimer();
 </script>
 
 </body>
