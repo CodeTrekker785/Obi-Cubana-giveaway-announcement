@@ -8,210 +8,280 @@
 
 <style>
 :root {
-  --bg: #f8fafc;
-  --card: #ffffff;
-  --primary: #4f46e5;
-  --primary-light: #eef2ff;
-  --gold: #b45309;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --primary:#4f46e5;
+  --primary-light:#eef2ff;
+  --gold:#b45309;
+  --text:#1e293b;
+  --muted:#64748b;
+  --shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+*{box-sizing:border-box}
 
-body { 
-  margin: 0; 
-  background: var(--bg); 
-  font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; 
-  color: var(--text-main);
+body{
+  margin:0;
+  background:var(--bg);
+  font-family:Segoe UI,Roboto,sans-serif;
+  color:var(--text);
 }
 
-.app { max-width: 480px; margin: auto; padding: 24px 20px 110px; min-height: 100vh; }
+.app{
+  max-width:480px;
+  margin:auto;
+  padding:20px 18px 110px;
+}
 
 /* WELCOME CARD */
-.welcome-card {
-  background: linear-gradient(135deg, #eef2ff, #ffffff);
-  border-radius: 26px;
-  padding: 26px;
-  margin-bottom: 26px;
-  box-shadow: 0 15px 30px rgba(79,70,229,0.12);
-  border: 1px solid rgba(79,70,229,0.15);
-  position: relative;
-  overflow: hidden;
+.welcome-card{
+  background:linear-gradient(135deg,#eef2ff,#fff);
+  padding:26px;
+  border-radius:26px;
+  box-shadow:var(--shadow);
+  margin-bottom:24px;
+  position:relative;
 }
 
-.welcome-card::after {
-  content: "👑";
-  position: absolute;
-  top: -15px;
-  right: -15px;
-  font-size: 90px;
-  opacity: 0.08;
+.welcome-card::after{
+  content:"👑";
+  position:absolute;
+  top:-15px;
+  right:-15px;
+  font-size:90px;
+  opacity:.08;
 }
 
-.welcome-card h3 {
-  margin: 0 0 12px;
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.welcome-card h3{
+  margin:0 0 12px;
+  color:var(--primary);
+  font-size:20px;
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
-.welcome-card p {
-  margin: 0;
-  font-size: 14.5px;
-  line-height: 1.85;
+.welcome-card p{
+  font-size:14.5px;
+  line-height:1.8;
 }
-
-.highlight { color: var(--gold); font-weight: 700; }
 
 /* HEADER */
-.header { display: flex; justify-content: space-between; margin-bottom: 22px; }
-.header h2 { margin: 0; font-size: 24px; font-weight: 800; }
-.header span { color: var(--primary); }
+.header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:22px;
+}
 
-.user-badge {
-  background: var(--primary-light);
-  color: var(--primary);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 4px;
+.header h2{
+  margin:0;
+  font-size:24px;
+  font-weight:800;
+}
+
+.header span{color:var(--primary)}
+
+.user-badge{
+  background:var(--primary-light);
+  color:var(--primary);
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:4px;
 }
 
 /* STATS */
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 26px;
+.stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-bottom:26px;
 }
 
-.stat-card {
-  background: var(--card);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: var(--shadow-sm);
+.stat{
+  background:var(--card);
+  padding:20px;
+  border-radius:20px;
+  box-shadow:var(--shadow);
 }
 
-.stat-card p { margin: 0; font-size: 13px; color: var(--text-muted); }
-.stat-card h3 { margin: 8px 0 0; font-size: 20px; }
-.stat-card.gold h3 { color: var(--gold); }
-
-/* ITEMS */
-.item-card {
-  background: var(--card);
-  padding: 18px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 12px;
-  box-shadow: var(--shadow-sm);
+.stat p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
 }
 
-.status-pill {
-  font-size: 11px;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 12px;
-  margin-left: auto;
+.stat h3{
+  margin:8px 0 0;
+  font-size:20px;
+  font-weight:800;
 }
 
-.live { background: #dcfce7; color: #15803d; }
-.upcoming { background: #fef3c7; color: #b45309; }
+.stat.gold h3{color:var(--gold)}
+
+/* PACKAGE CARDS */
+.package{
+  background:var(--card);
+  padding:18px;
+  border-radius:22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+  box-shadow:var(--shadow);
+}
+
+.badge{
+  font-size:12px;
+  font-weight:800;
+  padding:6px 14px;
+  border-radius:20px;
+}
+
+.live{background:#dcfce7;color:#15803d}
+.soon{background:#fef3c7;color:#b45309}
+
+/* PAGES */
+.page{display:none}
+.page.active{display:block;animation:fade .35s ease}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:none}
+}
 
 /* NAV */
-.bottom-nav {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-  height: 75px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+.bottom-nav{
+  position:fixed;
+  bottom:18px;
+  left:18px;
+  right:18px;
+  height:76px;
+  background:#fff;
+  border-radius:26px;
+  box-shadow:0 15px 35px rgba(0,0,0,.12);
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
 }
 
-.nav-btn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
+.nav-btn{
+  background:none;
+  border:none;
+  color:var(--muted);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  font-size:11px;
+  font-weight:700;
 }
 
-.nav-btn.active { color: var(--primary); }
-.nav-btn span { font-size: 10px; font-weight: 700; }
-
-.page { display: none; }
-.page.active { display: block; animation: fade 0.4s ease; }
-@keyframes fade { from { opacity:0; transform:translateY(10px);} to {opacity:1;} }
+.nav-btn.active{color:var(--primary)}
 </style>
 </head>
 
 <body>
+
 <div class="app">
 
 <!-- HOME -->
 <div id="home" class="page active">
 
-  <!-- WELCOME CARD -->
   <div class="welcome-card">
     <h3><i data-lucide="crown" size="20"></i> Obi Cubana Premium Hub</h3>
     <p>
-      Welcome to the <span class="highlight">official Obi Cubana Premium Hub</span>.  
+      Welcome to the official <b>Obi Cubana Premium Hub</b>.
       This platform rewards loyalty with transparency.
-      Every day, we open <strong>10 Giveaway packages</strong> for supporters who stay active.
+      Every day, we open <b>10 Giveaway packages</b>.
       <br><br>
-      It’s not just about luck — it’s about activity.
-      Complete your tasks, stay active in the news feed, and your reward is just a click away.
+      Complete tasks, stay active in the news feed,
+      and your reward is just a click away.
       <br><br>
-      <strong>Let’s build together 🚀</strong>
+      <b>Let’s build together 🚀</b>
     </p>
   </div>
 
   <div class="header">
     <h2>Hello,<br><span>Community 👑</span></h2>
-    <div class="user-badge"><i data-lucide="shield-check" size="14"></i> Obi Cubana</div>
+    <div class="user-badge">
+      <i data-lucide="shield-check" size="14"></i> Obi Cubana
+    </div>
   </div>
 
-  <div class="stats-grid">
-    <div class="stat-card gold"><p>Today's Gift</p><h3>₦1,000,000</h3></div>
-    <div class="stat-card"><p>Total Winners</p><h3>356</h3></div>
+  <div class="stats">
+    <div class="stat gold">
+      <p>Today's Gift</p>
+      <h3>₦1,000,000</h3>
+    </div>
+    <div class="stat">
+      <p>Total Winners</p>
+      <h3>356</h3>
+    </div>
   </div>
 
   <h3>Today's Packages (5)</h3>
-  <div class="item-card"><p>₦100,000 per winner</p><span class="status-pill live">LIVE</span></div>
-  <div class="item-card"><p>₦100,000 per winner</p><span class="status-pill live">LIVE</span></div>
-  <div class="item-card"><p>₦100,000 per winner</p><span class="status-pill live">LIVE</span></div>
-  <div class="item-card"><p>₦100,000 per winner</p><span class="status-pill upcoming">SOON</span></div>
-  <div class="item-card"><p>₦100,000 per winner</p><span class="status-pill upcoming">SOON</span></div>
+
+  <div class="package"><span>₦100,000 per winner</span><span class="badge live">LIVE</span></div>
+  <div class="package"><span>₦100,000 per winner</span><span class="badge live">LIVE</span></div>
+  <div class="package"><span>₦100,000 per winner</span><span class="badge live">LIVE</span></div>
+  <div class="package"><span>₦100,000 per winner</span><span class="badge soon">SOON</span></div>
+  <div class="package"><span>₦100,000 per winner</span><span class="badge soon">SOON</span></div>
 
 </div>
+
+<!-- NEWS -->
+<div id="news" class="page">
+  <h2>Latest News 📢</h2>
+  <p>All announcements will appear here.</p>
 </div>
 
+<!-- TASKS -->
+<div id="tasks" class="page">
+  <h2>Qualification Tasks ✅</h2>
+  <p>Complete all tasks to qualify.</p>
+</div>
+
+<!-- WINNERS -->
+<div id="winners" class="page">
+  <h2>Hall of Winners 🏆</h2>
+  <p>Verified winners list.</p>
+</div>
+
+</div>
+
+<!-- NAVIGATION -->
 <nav class="bottom-nav">
-  <button class="nav-btn active"><i data-lucide="home"></i><span>Home</span></button>
-  <button class="nav-btn"><i data-lucide="megaphone"></i><span>News</span></button>
-  <button class="nav-btn"><i data-lucide="list-checks"></i><span>Tasks</span></button>
-  <button class="nav-btn"><i data-lucide="trophy"></i><span>Winners</span></button>
+  <button class="nav-btn active" onclick="openPage('home',this)">
+    <i data-lucide="home"></i><span>Home</span>
+  </button>
+  <button class="nav-btn" onclick="openPage('news',this)">
+    <i data-lucide="megaphone"></i><span>News</span>
+  </button>
+  <button class="nav-btn" onclick="openPage('tasks',this)">
+    <i data-lucide="list-checks"></i><span>Tasks</span>
+  </button>
+  <button class="nav-btn" onclick="openPage('winners',this)">
+    <i data-lucide="trophy"></i><span>Winners</span>
+  </button>
 </nav>
 
 <script>
+function openPage(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+
+  window.scrollTo(0,0);
+  lucide.createIcons();
+}
 lucide.createIcons();
 </script>
+
 </body>
 </html>
