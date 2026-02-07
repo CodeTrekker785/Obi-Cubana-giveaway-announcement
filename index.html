@@ -13,11 +13,9 @@
   --primary: #4f46e5;
   --primary-light: #eef2ff;
   --gold: #b45309;
-  --gold-bg: #fffbeb;
   --text-main: #1e293b;
   --text-muted: #64748b;
   --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
 }
 
 * {
@@ -62,14 +60,12 @@ body {
   border-radius: 20px;
   font-size: 12px;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-/* SEARCH BAR */
+/* SEARCH */
 .search-container {
   position: relative;
   margin-bottom: 24px;
@@ -94,7 +90,7 @@ body {
   color: var(--text-muted);
 }
 
-/* STATS GRID */
+/* STATS */
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -107,33 +103,18 @@ body {
   padding: 20px;
   border-radius: 20px;
   box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(255,255,255,0.7);
 }
 
-.stat-card p {
-  margin: 0;
-  font-size: 13px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.stat-card h3 {
-  margin: 8px 0 0;
-  font-size: 20px;
-  color: var(--text-main);
-  font-weight: 700;
-}
-
+.stat-card p { margin: 0; font-size: 13px; color: var(--text-muted); font-weight: 500; }
+.stat-card h3 { margin: 8px 0 0; font-size: 20px; font-weight: 700; }
 .stat-card.gold h3 { color: var(--gold); }
 
-/* GIVEAWAY CARD */
+/* PROMO CARD */
 .promo-card {
   background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   color: white;
   padding: 28px;
   border-radius: 24px;
-  position: relative;
-  overflow: hidden;
   box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.2);
   margin-bottom: 24px;
 }
@@ -155,7 +136,7 @@ body {
   border: 1px solid rgba(255,255,255,0.2);
 }
 
-/* SOCIAL ACTIONS */
+/* SOCIAL LINKS */
 .social-links { display: grid; gap: 12px; }
 
 .link-item {
@@ -166,28 +147,11 @@ body {
   justify-content: space-between;
   align-items: center;
   text-decoration: none;
-  transition: transform 0.2s;
   box-shadow: var(--shadow-sm);
 }
 
-.link-item:active { transform: scale(0.97); }
-
-.link-label {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-.btn-join {
-  background: var(--primary);
-  color: #fff;
-  padding: 8px 20px;
-  border-radius: 12px;
-  font-size: 13px;
-  font-weight: 700;
-}
+.link-label { display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--text-main); }
+.btn-join { background: var(--primary); color: #fff; padding: 8px 20px; border-radius: 12px; font-size: 13px; font-weight: 700; }
 
 /* NAVIGATION */
 .bottom-nav {
@@ -206,17 +170,7 @@ body {
   border: 1px solid rgba(255,255,255,0.5);
 }
 
-.nav-btn {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-}
-
+.nav-btn { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
 .nav-btn.active { color: var(--primary); }
 .nav-btn span { font-size: 11px; font-weight: 700; }
 
@@ -238,6 +192,10 @@ body {
   align-items: center;
   box-shadow: var(--shadow-sm);
 }
+
+.winner-info h4 { margin: 0; font-size: 15px; }
+.winner-info p { margin: 4px 0 0; font-size: 12px; color: var(--text-muted); }
+.winner-amt { color: var(--gold); font-weight: 700; }
 </style>
 </head>
 
@@ -248,9 +206,7 @@ body {
   <div id="home" class="page active">
     <div class="header">
       <h2>Hello,<br><span>Community 👑</span></h2>
-      <div class="user-badge">
-        <i data-lucide="shield-check" size="14"></i> Obi Cubana
-      </div>
+      <div class="user-badge"><i data-lucide="shield-check" size="14"></i> Obi Cubana</div>
     </div>
 
     <div class="search-container">
@@ -280,79 +236,74 @@ body {
 
     <div class="social-links">
       <a href="https://wa.me/qr/ZLPFANCDZN5ZP1" target="_blank" class="link-item">
-        <div class="link-label">
-          <i data-lucide="message-circle" color="#25D366"></i>
-          <span>Official WhatsApp</span>
-        </div>
+        <div class="link-label"><i data-lucide="message-circle" color="#25D366"></i><span>Official WhatsApp</span></div>
         <div class="btn-join">Join</div>
       </a>
       <a href="https://t.me/Cubana_giveaway" target="_blank" class="link-item">
-        <div class="link-label">
-          <i data-lucide="send" color="#0088cc"></i>
-          <span>Telegram Channel</span>
-        </div>
+        <div class="link-label"><i data-lucide="send" color="#0088cc"></i><span>Telegram Channel</span></div>
         <div class="btn-join">Join</div>
       </a>
     </div>
   </div>
 
   <div id="winners" class="page">
-    <div class="header">
-      <h2>Hall of<br><span>Winners 🏆</span></h2>
-    </div>
+    <div class="header"><h2>Hall of<br><span>Winners 🏆</span></h2></div>
     
     <div class="winner-row">
-      <div class="winner-info">
-        <h4 style="margin:0">Chinedu Okafor</h4>
-        <p style="margin:4px 0 0; font-size:12px; color:var(--text-muted)">Lagos • 2 mins ago</p>
-      </div>
-      <div style="color:var(--gold); font-weight:700">₦100,000</div>
+      <div class="winner-info"><h4>Chinedu Okafor</h4><p>Lagos • 2 mins ago</p></div>
+      <div class="winner-amt">₦100,000</div>
     </div>
-
     <div class="winner-row">
-      <div class="winner-info">
-        <h4 style="margin:0">Aisha Bello</h4>
-        <p style="margin:4px 0 0; font-size:12px; color:var(--text-muted)">Abuja • 1 hour ago</p>
-      </div>
-      <div style="color:var(--gold); font-weight:700">₦50,000</div>
+      <div class="winner-info"><h4>Aisha Bello</h4><p>Abuja • 1 hour ago</p></div>
+      <div class="winner-amt">₦50,000</div>
+    </div>
+    <div class="winner-row">
+      <div class="winner-info"><h4>Samuel Adeyemi</h4><p>Ibadan • 3 hours ago</p></div>
+      <div class="winner-amt">₦75,000</div>
+    </div>
+    <div class="winner-row">
+      <div class="winner-info"><h4>Blessing Okon</h4><p>Port Harcourt • 5 hours ago</p></div>
+      <div class="winner-amt">₦100,000</div>
+    </div>
+    <div class="winner-row">
+      <div class="winner-info"><h4>Musa Ibrahim</h4><p>Kano • 8 hours ago</p></div>
+      <div class="winner-amt">₦25,000</div>
+    </div>
+    <div class="winner-row">
+      <div class="winner-info"><h4>Emeka Nwosu</h4><p>Enugu • 12 hours ago</p></div>
+      <div class="winner-amt">₦50,000</div>
+    </div>
+    <div class="winner-row">
+      <div class="winner-info"><h4>Tunde Bakare</h4><p>Abeokuta • 15 hours ago</p></div>
+      <div class="winner-amt">₦100,000</div>
+    </div>
+    <div class="winner-row">
+      <div class="winner-info"><h4>Chioma Adeleke</h4><p>Benin City • Yesterday</p></div>
+      <div class="winner-amt">₦75,000</div>
     </div>
   </div>
 
 </div>
 
 <nav class="bottom-nav">
-  <button class="nav-btn active" onclick="openPage('home', this)">
-    <i data-lucide="home"></i>
-    <span>Home</span>
-  </button>
-  <button class="nav-btn" onclick="openPage('winners', this)">
-    <i data-lucide="trophy"></i>
-    <span>Winners</span>
-  </button>
+  <button class="nav-btn active" onclick="openPage('home', this)"><i data-lucide="home"></i><span>Home</span></button>
+  <button class="nav-btn" onclick="openPage('winners', this)"><i data-lucide="trophy"></i><span>Winners</span></button>
 </nav>
 
 <script>
-// Initialize Icons
 lucide.createIcons();
-
-// Page Switcher
-function openPage(pageId, btn) {
+function openPage(id, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById(pageId).classList.add('active');
+  document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   window.scrollTo(0,0);
 }
-
-// Timer Logic
-let totalSeconds = 86326;
+let s = 86326;
 function updateTimer() {
-  let hrs = Math.floor(totalSeconds / 3600);
-  let mins = Math.floor((totalSeconds % 3600) / 60);
-  let secs = totalSeconds % 60;
-  document.getElementById("timer").textContent = 
-    `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  if (totalSeconds > 0) totalSeconds--;
+  let h=Math.floor(s/3600), m=Math.floor((s%3600)/60), x=s%60;
+  document.getElementById("timer").textContent = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${x.toString().padStart(2,'0')}`;
+  if(s>0)s--;
 }
 setInterval(updateTimer, 1000);
 updateTimer();
