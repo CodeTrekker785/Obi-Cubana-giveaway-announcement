@@ -65,6 +65,50 @@ body {
   gap: 4px;
 }
 
+/* SEARCH */
+.search-container {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 14px 16px 14px 44px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: var(--card);
+  font-size: 15px;
+  outline: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+/* STATS GRID - RESTORED */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-card p { margin: 0; font-size: 13px; color: var(--text-muted); font-weight: 500; }
+.stat-card h3 { margin: 8px 0 0; font-size: 20px; font-weight: 700; }
+.stat-card.gold h3 { color: var(--gold); }
+
 /* PROMO CARD */
 .promo-card {
   background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
@@ -74,9 +118,6 @@ body {
   box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.2);
   margin-bottom: 24px;
 }
-
-.promo-card h3 { margin: 0; font-size: 20px; font-weight: 700; }
-.promo-card p { opacity: 0.9; font-size: 14px; margin: 8px 0 20px; }
 
 .timer-box {
   background: rgba(255, 255, 255, 0.15);
@@ -92,7 +133,7 @@ body {
   border: 1px solid rgba(255,255,255,0.2);
 }
 
-/* TASK LIST STYLE */
+/* TASK STYLING */
 .task-item {
   background: var(--card);
   padding: 16px;
@@ -102,7 +143,6 @@ body {
   gap: 15px;
   margin-bottom: 12px;
   box-shadow: var(--shadow-sm);
-  border: 1px solid transparent;
 }
 
 .task-number {
@@ -118,9 +158,6 @@ body {
   flex-shrink: 0;
 }
 
-.task-content h4 { margin: 0; font-size: 15px; }
-.task-content p { margin: 2px 0 0; font-size: 13px; color: var(--text-muted); }
-
 /* SOCIAL LINKS */
 .social-links { display: grid; gap: 12px; }
 .link-item {
@@ -133,7 +170,6 @@ body {
   text-decoration: none;
   box-shadow: var(--shadow-sm);
 }
-.link-label { display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--text-main); }
 .btn-join { background: var(--primary); color: #fff; padding: 8px 20px; border-radius: 12px; font-size: 13px; font-weight: 700; }
 
 /* NAVIGATION */
@@ -154,7 +190,7 @@ body {
   z-index: 1000;
 }
 
-.nav-btn { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; transition: 0.3s; }
+.nav-btn { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
 .nav-btn.active { color: var(--primary); }
 .nav-btn span { font-size: 11px; font-weight: 700; }
 
@@ -174,9 +210,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: var(--shadow-sm);
 }
-.winner-amt { color: var(--gold); font-weight: 700; }
 </style>
 </head>
 
@@ -190,6 +224,22 @@ body {
       <div class="user-badge"><i data-lucide="shield-check" size="14"></i> Obi Cubana</div>
     </div>
 
+    <div class="search-container">
+      <i data-lucide="search" class="search-icon" size="20"></i>
+      <input type="text" placeholder="Search announcements...">
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card gold">
+        <p>Today's Gift</p>
+        <h3>₦100,000</h3>
+      </div>
+      <div class="stat-card">
+        <p>Total Winners</p>
+        <h3>356</h3>
+      </div>
+    </div>
+
     <div class="promo-card">
       <h3>Daily Appreciation</h3>
       <p>Celebrating excellence & gratitude</p>
@@ -201,11 +251,11 @@ body {
 
     <div class="social-links">
       <a href="https://wa.me/qr/ZLPFANCDZN5ZP1" target="_blank" class="link-item">
-        <div class="link-label"><i data-lucide="message-circle" color="#25D366"></i><span>Official WhatsApp</span></div>
+        <div style="display:flex;align-items:center;gap:12px;font-weight:600;color:var(--text-main)"><i data-lucide="message-circle" color="#25D366"></i><span>WhatsApp</span></div>
         <div class="btn-join">Join</div>
       </a>
       <a href="https://t.me/Cubana_giveaway" target="_blank" class="link-item">
-        <div class="link-label"><i data-lucide="send" color="#0088cc"></i><span>Telegram Channel</span></div>
+        <div style="display:flex;align-items:center;gap:12px;font-weight:600;color:var(--text-main)"><i data-lucide="send" color="#0088cc"></i><span>Telegram</span></div>
         <div class="btn-join">Join</div>
       </a>
     </div>
@@ -218,7 +268,7 @@ body {
 
     <div class="task-item">
       <div class="task-number">1</div>
-      <div class="task-content">
+      <div>
         <h4>Join Community</h4>
         <p>Must be a member of WhatsApp & Telegram.</p>
       </div>
@@ -226,7 +276,7 @@ body {
 
     <div class="task-item">
       <div class="task-number">2</div>
-      <div class="task-content">
+      <div>
         <h4>Share the Link</h4>
         <p>Invite 5 friends to the appreciation group.</p>
       </div>
@@ -234,34 +284,18 @@ body {
 
     <div class="task-item">
       <div class="task-number">3</div>
-      <div class="task-content">
+      <div>
         <h4>Submit Details</h4>
-        <p>Enter your bank info in the Profile tab.</p>
-      </div>
-    </div>
-
-    <div class="task-item">
-      <div class="task-number">4</div>
-      <div class="task-content">
-        <h4>Wait for Verification</h4>
-        <p>Admins will verify tasks within 2 hours.</p>
+        <p>Enter your information for verification.</p>
       </div>
     </div>
   </div>
 
   <div id="winners" class="page">
     <div class="header"><h2>Hall of<br><span>Winners 🏆</span></h2></div>
-    <div class="winner-row">
-      <div class="winner-info"><h4>Chinedu Okafor</h4><p>Lagos • 2 mins ago</p></div>
-      <div class="winner-amt">₦100,000</div>
-    </div>
-    <div class="winner-row">
-      <div class="winner-info"><h4>Aisha Bello</h4><p>Abuja • 1 hour ago</p></div>
-      <div class="winner-amt">₦50,000</div>
-    </div>
-    <div class="winner-row">
-      <div class="winner-info"><h4>Blessing Okon</h4><p>PH • 5 hours ago</p></div>
-      <div class="winner-amt">₦100,000</div>
+    <div class="winner-row" style="background:white;padding:16px;border-radius:16px;margin-bottom:12px;display:flex;justify-content:space-between;box-shadow:var(--shadow-sm)">
+      <div><h4 style="margin:0">Chinedu Okafor</h4><p style="margin:4px 0 0;font-size:12px;color:var(--text-muted)">Lagos</p></div>
+      <div style="color:var(--gold);font-weight:700">₦100,000</div>
     </div>
   </div>
 
@@ -284,7 +318,6 @@ body {
 
 <script>
 lucide.createIcons();
-
 function openPage(id, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -293,7 +326,6 @@ function openPage(id, btn) {
   window.scrollTo(0,0);
 }
 
-// Timer Logic
 let s = 86326;
 function updateTimer() {
   let h=Math.floor(s/3600), m=Math.floor((s%3600)/60), x=s%60;
