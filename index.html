@@ -3,167 +3,274 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Obi Cubana Appreciation</title>
+<title>Obi Cubana Premium</title>
 
 <style>
-:root{
-  --bg:#f4f4f4;
-  --card:#ffffff;
-  --primary:#6c63ff;
-  --gold:#d4af37;
-  --text:#111827;
-  --muted:#6b7280;
-  --shadow:0 10px 25px rgba(0,0,0,.08);
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --primary: #4f46e5;
+  --primary-light: #eef2ff;
+  --gold: #b45309;
+  --gold-bg: #fffbeb;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --shadow-sm: 0 4px 6px -1px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
 }
 
-*{
-  box-sizing:border-box;
-  font-family:"Inter",system-ui,sans-serif;
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-body{
-  margin:0;
-  background:var(--bg);
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-main);
 }
 
-.app{
-  max-width:420px;
-  margin:auto;
-  padding:16px;
-  padding-bottom:90px;
+.app {
+  max-width: 480px;
+  margin: auto;
+  padding: 24px 20px 100px;
 }
 
 /* HEADER */
-.header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
 }
 
-.header h2{
-  margin:0;
-  font-size:22px;
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.2;
 }
 
-.header span{
-  color:var(--primary);
+.header span { color: var(--primary); }
+
+.user-badge {
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* SEARCH */
-.search{
-  margin:16px 0;
+/* SEARCH BAR */
+.search-container {
+  position: relative;
+  margin-bottom: 24px;
 }
 
-.search input{
-  width:100%;
-  padding:14px;
-  border-radius:14px;
-  border:none;
-  box-shadow:var(--shadow);
-  font-size:14px;
+.search-container input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: var(--card);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
 }
 
-/* STAT CARDS */
-.stats{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
+.search-container input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
-.stat{
-  background:var(--card);
-  border-radius:18px;
-  padding:18px;
-  box-shadow:var(--shadow);
+/* STATS GRID */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
-.stat p{
-  margin:0;
-  font-size:13px;
-  color:var(--muted);
+.stat-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255,255,255,0.7);
 }
 
-.stat h3{
-  margin-top:6px;
-  color:var(--gold);
+.stat-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
-/* MAIN CARD */
-.main-card{
-  margin-top:20px;
-  background:var(--primary);
-  color:#fff;
-  border-radius:22px;
-  padding:22px;
+.stat-card h3 {
+  margin: 8px 0 0;
+  font-size: 20px;
+  color: var(--text-main);
+  font-weight: 700;
 }
 
-.main-card h3{
-  margin:0;
+.stat-card.gold h3 { color: var(--gold); }
+
+/* GIVEAWAY CARD - PREMIUM LOOK */
+.promo-card {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  padding: 28px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 25px -5px rgba(79, 70, 229, 0.2);
+  margin-bottom: 24px;
 }
 
-.main-card p{
-  font-size:14px;
-  opacity:.9;
+.promo-card::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 150px;
+  height: 150px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
 }
 
-.countdown{
-  margin-top:14px;
-  font-size:24px;
-  font-weight:700;
+.promo-card h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
 }
 
-/* ACTION CARDS */
-.actions{
-  margin-top:20px;
-  display:grid;
-  gap:14px;
+.promo-card p {
+  opacity: 0.9;
+  font-size: 14px;
+  margin: 8px 0 20px;
 }
 
-.action{
-  background:var(--card);
-  border-radius:18px;
-  padding:16px;
-  box-shadow:var(--shadow);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.timer-box {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 14px;
+  font-family: monospace;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
-.action span{
-  font-size:14px;
+/* ACTIONS */
+.social-links { display: grid; gap: 12px; }
+
+.link-item {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.2s, border 0.2s;
+  box-shadow: var(--shadow-sm);
 }
 
-.btn{
-  padding:10px 14px;
-  border-radius:12px;
-  background:var(--primary);
-  color:#fff;
-  text-decoration:none;
-  font-size:13px;
+.link-item:active { transform: scale(0.98); }
+
+.link-item span {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 15px;
 }
 
-/* BOTTOM NAV */
-.nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#fff;
-  display:flex;
-  justify-content:space-around;
-  padding:12px 0;
-  box-shadow:0 -10px 25px rgba(0,0,0,.1);
+.btn-join {
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
 }
 
-.nav div{
-  font-size:12px;
-  color:var(--muted);
+/* NAVIGATION */
+.bottom-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  height: 65px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.5);
+  z-index: 100;
 }
 
-.nav .active{
-  color:var(--primary);
-  font-weight:600;
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
+
+.nav-btn.active {
+  color: var(--primary);
+  position: relative;
+}
+
+.nav-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.page { display: none; animation: fadeIn 0.4s ease; }
+.page.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* WINNERS LIST */
+.winner-row {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.winner-info h4 { margin: 0; font-size: 15px; }
+.winner-info p { margin: 4px 0 0; font-size: 12px; color: var(--text-muted); }
+.winner-amount { color: var(--gold); font-weight: 700; font-size: 14px; }
+
 </style>
 </head>
 
@@ -171,71 +278,110 @@ body{
 
 <div class="app">
 
-  <!-- HEADER -->
-  <div class="header">
-    <h2>Hello,<br><span>Community 👑</span></h2>
-    <strong>Obi Cubana</strong>
-  </div>
-
-  <!-- SEARCH -->
-  <div class="search">
-    <input type="text" placeholder="Search announcements">
-  </div>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat">
-      <p>Today's Gift</p>
-      <h3>₦100,000</h3>
+  <div id="home" class="page active">
+    <div class="header">
+      <h2>Hello,<br><span>Community 👑</span></h2>
+      <div class="user-badge">Obi Cubana</div>
     </div>
-    <div class="stat">
-      <p>Total Winners</p>
-      <h3>356</h3>
+
+    <div class="search-container">
+      <input type="text" placeholder="Search announcements...">
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card gold">
+        <p>Today's Gift</p>
+        <h3>₦100,000</h3>
+      </div>
+      <div class="stat-card">
+        <p>Total Winners</p>
+        <h3>356</h3>
+      </div>
+    </div>
+
+    <div class="promo-card">
+      <h3>Daily Appreciation</h3>
+      <p>Celebrating excellence & gratitude</p>
+      <div class="timer-box" id="timer">23:58:46</div>
+    </div>
+
+    <div class="social-links">
+      <a href="#" class="link-item">
+        <span>Official WhatsApp</span>
+        <div class="btn-join">Join</div>
+      </a>
+      <a href="#" class="link-item">
+        <span>Telegram Channel</span>
+        <div class="btn-join">Join</div>
+      </a>
     </div>
   </div>
 
-  <!-- MAIN GIVEAWAY CARD -->
-  <div class="main-card">
-    <h3>Daily Appreciation Giveaway</h3>
-    <p>Celebrating excellence, gratitude & community</p>
-    <div class="countdown" id="timer">24:00:00</div>
-  </div>
-
-  <!-- ACTION CARDS -->
-  <div class="actions">
-    <div class="action">
-      <span>Join Official WhatsApp</span>
-      <a href="https://wa.me/+2349019619516" class="btn">Join</a>
+  <div id="winners" class="page">
+    <div class="header">
+      <h2>Hall of<br><span>Winners 🏆</span></h2>
     </div>
-    <div class="action">
-      <span>Join Telegram Channel</span>
-      <a href="https://t.me/Cubana_giveaway" class="btn">Join</a>
+    
+    <div class="winner-row">
+      <div class="winner-info">
+        <h4>Chinedu Okafor</h4>
+        <p>Lagos • 2 mins ago</p>
+      </div>
+      <div class="winner-amount">₦100,000</div>
+    </div>
+
+    <div class="winner-row">
+      <div class="winner-info">
+        <h4>Aisha Bello</h4>
+        <p>Abuja • 1 hour ago</p>
+      </div>
+      <div class="winner-amount">₦50,000</div>
+    </div>
+
+    <div class="winner-row">
+      <div class="winner-info">
+        <h4>Samuel Adeyemi</h4>
+        <p>Ibadan • 3 hours ago</p>
+      </div>
+      <div class="winner-amount">₦75,000</div>
     </div>
   </div>
 
 </div>
 
-<!-- BOTTOM NAV -->
-<div class="nav">
-  <div class="active">Home</div>
-  <div>Winners</div>
-  <div>Community</div>
-  <div>Profile</div>
-</div>
+<nav class="bottom-nav">
+  <button class="nav-btn active" onclick="openPage('home', this)">Home</button>
+  <button class="nav-btn" onclick="openPage('winners', this)">Winners</button>
+</nav>
 
 <script>
-let s=86400;
-const t=document.getElementById("timer");
-setInterval(()=>{
-  let h=Math.floor(s/3600),
-      m=Math.floor((s%3600)/60),
-      x=s%60;
-  t.textContent=
-    h.toString().padStart(2,"0")+":"+
-    m.toString().padStart(2,"0")+":"+
-    x.toString().padStart(2,"0");
-  if(s>0)s--;
-},1000);
+// Smooth Page Switching
+function openPage(pageId, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// Professional Timer Logic
+let totalSeconds = 86326;
+const timerDisplay = document.getElementById("timer");
+
+function updateTimer() {
+  let hrs = Math.floor(totalSeconds / 3600);
+  let mins = Math.floor((totalSeconds % 3600) / 60);
+  let secs = totalSeconds % 60;
+
+  timerDisplay.textContent = 
+    `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  
+  if (totalSeconds > 0) totalSeconds--;
+}
+
+setInterval(updateTimer, 1000);
+updateTimer();
 </script>
 
 </body>
