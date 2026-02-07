@@ -65,50 +65,6 @@ body {
   gap: 4px;
 }
 
-/* SEARCH */
-.search-container {
-  position: relative;
-  margin-bottom: 24px;
-}
-
-.search-container input {
-  width: 100%;
-  padding: 14px 16px 14px 44px;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  background: var(--card);
-  font-size: 15px;
-  outline: none;
-  box-shadow: var(--shadow-sm);
-}
-
-.search-icon {
-  position: absolute;
-  left: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-}
-
-/* STATS */
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.stat-card {
-  background: var(--card);
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: var(--shadow-sm);
-}
-
-.stat-card p { margin: 0; font-size: 13px; color: var(--text-muted); font-weight: 500; }
-.stat-card h3 { margin: 8px 0 0; font-size: 20px; font-weight: 700; }
-.stat-card.gold h3 { color: var(--gold); }
-
 /* PROMO CARD */
 .promo-card {
   background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
@@ -136,9 +92,37 @@ body {
   border: 1px solid rgba(255,255,255,0.2);
 }
 
+/* TASK LIST STYLE */
+.task-item {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid transparent;
+}
+
+.task-number {
+  background: var(--primary-light);
+  color: var(--primary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.task-content h4 { margin: 0; font-size: 15px; }
+.task-content p { margin: 2px 0 0; font-size: 13px; color: var(--text-muted); }
+
 /* SOCIAL LINKS */
 .social-links { display: grid; gap: 12px; }
-
 .link-item {
   background: var(--card);
   padding: 18px;
@@ -149,7 +133,6 @@ body {
   text-decoration: none;
   box-shadow: var(--shadow-sm);
 }
-
 .link-label { display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--text-main); }
 .btn-join { background: var(--primary); color: #fff; padding: 8px 20px; border-radius: 12px; font-size: 13px; font-weight: 700; }
 
@@ -168,9 +151,10 @@ body {
   border-radius: 24px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   border: 1px solid rgba(255,255,255,0.5);
+  z-index: 1000;
 }
 
-.nav-btn { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; }
+.nav-btn { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; transition: 0.3s; }
 .nav-btn.active { color: var(--primary); }
 .nav-btn span { font-size: 11px; font-weight: 700; }
 
@@ -192,9 +176,6 @@ body {
   align-items: center;
   box-shadow: var(--shadow-sm);
 }
-
-.winner-info h4 { margin: 0; font-size: 15px; }
-.winner-info p { margin: 4px 0 0; font-size: 12px; color: var(--text-muted); }
 .winner-amt { color: var(--gold); font-weight: 700; }
 </style>
 </head>
@@ -207,22 +188,6 @@ body {
     <div class="header">
       <h2>Hello,<br><span>Community 👑</span></h2>
       <div class="user-badge"><i data-lucide="shield-check" size="14"></i> Obi Cubana</div>
-    </div>
-
-    <div class="search-container">
-      <i data-lucide="search" class="search-icon" size="20"></i>
-      <input type="text" placeholder="Search announcements...">
-    </div>
-
-    <div class="stats-grid">
-      <div class="stat-card gold">
-        <p>Today's Gift</p>
-        <h3>₦500,000</h3>
-      </div>
-      <div class="stat-card">
-        <p>Total Winners</p>
-        <h3>356</h3>
-      </div>
     </div>
 
     <div class="promo-card">
@@ -246,9 +211,46 @@ body {
     </div>
   </div>
 
+  <div id="tasks" class="page">
+    <div class="header">
+      <h2>Qualification<br><span>Tasks ✅</span></h2>
+    </div>
+
+    <div class="task-item">
+      <div class="task-number">1</div>
+      <div class="task-content">
+        <h4>Join Community</h4>
+        <p>Must be a member of WhatsApp & Telegram.</p>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <div class="task-number">2</div>
+      <div class="task-content">
+        <h4>Share the Link</h4>
+        <p>Invite 5 friends to the appreciation group.</p>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <div class="task-number">3</div>
+      <div class="task-content">
+        <h4>Submit Details</h4>
+        <p>Enter your bank info in the Profile tab.</p>
+      </div>
+    </div>
+
+    <div class="task-item">
+      <div class="task-number">4</div>
+      <div class="task-content">
+        <h4>Wait for Verification</h4>
+        <p>Admins will verify tasks within 2 hours.</p>
+      </div>
+    </div>
+  </div>
+
   <div id="winners" class="page">
     <div class="header"><h2>Hall of<br><span>Winners 🏆</span></h2></div>
-    
     <div class="winner-row">
       <div class="winner-info"><h4>Chinedu Okafor</h4><p>Lagos • 2 mins ago</p></div>
       <div class="winner-amt">₦100,000</div>
@@ -258,40 +260,31 @@ body {
       <div class="winner-amt">₦50,000</div>
     </div>
     <div class="winner-row">
-      <div class="winner-info"><h4>Samuel Adeyemi</h4><p>Ibadan • 3 hours ago</p></div>
-      <div class="winner-amt">₦75,000</div>
-    </div>
-    <div class="winner-row">
-      <div class="winner-info"><h4>Blessing Okon</h4><p>Port Harcourt • 5 hours ago</p></div>
+      <div class="winner-info"><h4>Blessing Okon</h4><p>PH • 5 hours ago</p></div>
       <div class="winner-amt">₦100,000</div>
-    </div>
-    <div class="winner-row">
-      <div class="winner-info"><h4>Musa Ibrahim</h4><p>Kano • 8 hours ago</p></div>
-      <div class="winner-amt">₦25,000</div>
-    </div>
-    <div class="winner-row">
-      <div class="winner-info"><h4>Emeka Nwosu</h4><p>Enugu • 12 hours ago</p></div>
-      <div class="winner-amt">₦50,000</div>
-    </div>
-    <div class="winner-row">
-      <div class="winner-info"><h4>Tunde Bakare</h4><p>Abeokuta • 15 hours ago</p></div>
-      <div class="winner-amt">₦100,000</div>
-    </div>
-    <div class="winner-row">
-      <div class="winner-info"><h4>Chioma Adeleke</h4><p>Benin City • Yesterday</p></div>
-      <div class="winner-amt">₦75,000</div>
     </div>
   </div>
 
 </div>
 
 <nav class="bottom-nav">
-  <button class="nav-btn active" onclick="openPage('home', this)"><i data-lucide="home"></i><span>Home</span></button>
-  <button class="nav-btn" onclick="openPage('winners', this)"><i data-lucide="trophy"></i><span>Winners</span></button>
+  <button class="nav-btn active" onclick="openPage('home', this)">
+    <i data-lucide="home"></i>
+    <span>Home</span>
+  </button>
+  <button class="nav-btn" onclick="openPage('tasks', this)">
+    <i data-lucide="list-checks"></i>
+    <span>Tasks</span>
+  </button>
+  <button class="nav-btn" onclick="openPage('winners', this)">
+    <i data-lucide="trophy"></i>
+    <span>Winners</span>
+  </button>
 </nav>
 
 <script>
 lucide.createIcons();
+
 function openPage(id, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -299,6 +292,8 @@ function openPage(id, btn) {
   btn.classList.add('active');
   window.scrollTo(0,0);
 }
+
+// Timer Logic
 let s = 86326;
 function updateTimer() {
   let h=Math.floor(s/3600), m=Math.floor((s%3600)/60), x=s%60;
