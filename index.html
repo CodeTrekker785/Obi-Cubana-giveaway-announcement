@@ -27,9 +27,6 @@ body { margin: 0; background: var(--bg); font-family: 'Segoe UI', Roboto, sans-s
 .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
 .header h2 { margin: 0; font-size: 24px; font-weight: 800; }
 .header span { color: var(--primary); }
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-.stat-card { background: var(--card); padding: 20px; border-radius: 20px; box-shadow: var(--shadow-sm); }
-.stat-card h3 { margin: 8px 0 0; font-size: 20px; font-weight: 700; color: var(--gold); }
 
 /* NEWS / ANNOUNCEMENT STYLING */
 .announcement-card {
@@ -40,43 +37,58 @@ body { margin: 0; background: var(--bg); font-family: 'Segoe UI', Roboto, sans-s
   box-shadow: 0 10px 20px rgba(79, 70, 229, 0.08);
   margin-bottom: 20px;
   position: relative;
-  overflow: hidden;
 }
-.announcement-card::before {
-  content: "HOT";
-  position: absolute;
-  top: 12px;
-  right: -20px;
-  background: #ef4444;
-  color: white;
-  font-size: 10px;
-  font-weight: 900;
-  padding: 4px 25px;
-  transform: rotate(45deg);
-}
+
 .announcement-text {
   font-size: 15px;
   line-height: 1.7;
   color: var(--text-main);
-  white-space: pre-wrap; /* Maintains your line breaks */
+  white-space: pre-wrap;
 }
 
-/* TASKS & GIVEAWAY LIST */
-.task-card, .giveaway-item {
-  background: var(--card); padding: 18px; border-radius: 20px; display: flex; 
-  align-items: center; gap: 15px; margin-bottom: 12px; box-shadow: var(--shadow-sm); cursor: pointer;
+.news-item {
+  background: var(--card);
+  padding: 16px;
+  border-radius: 18px;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid #e2e8f0;
 }
-.task-num { background: var(--primary-light); color: var(--primary); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
-.status-pill { font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 12px; margin-left: auto; }
-.live { background: #dcfce7; color: #15803d; }
-.upcoming { background: #fef3c7; color: #b45309; }
 
-/* MODAL */
-#taskModal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
-.modal-content { background: white; padding: 30px; border-radius: 28px; width: 100%; max-width: 400px; text-align: center; }
-.modal-btn { background: var(--primary); color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 700; width: 100%; margin-top: 20px; }
+.news-icon {
+  background: var(--primary-light);
+  color: var(--primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
-/* NAV */
+.news-content h4 { margin: 0; font-size: 15px; color: var(--text-main); }
+.news-content p { margin: 4px 0 0; font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+.share-btn {
+  margin-top: 15px;
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+}
+
+/* NAVIGATION */
 .bottom-nav { position: fixed; bottom: 20px; left: 20px; right: 20px; background: white; height: 75px; display: flex; justify-content: space-around; align-items: center; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 1000; }
 .nav-btn { background: none; border: none; color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; flex: 1; }
 .nav-btn.active { color: var(--primary); }
@@ -92,18 +104,7 @@ body { margin: 0; background: var(--bg); font-family: 'Segoe UI', Roboto, sans-s
 
   <div id="home" class="page active">
     <div class="header"><h2>Hello,<br><span>Community 👑</span></h2></div>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <p>Today's Gift</p>
-        <h3>₦100,000</h3>
-      </div>
-      <div class="stat-card">
-        <p>Winners</p>
-        <h3>356</h3>
-      </div>
-    </div>
-    <h3 style="margin-bottom:15px">Daily Giveaways (10 Slots)</h3>
-    <div id="giveawayGrid"></div>
+    <p>Welcome back! Check the News tab for the latest giveaway updates.</p>
   </div>
 
   <div id="news" class="page">
@@ -119,78 +120,50 @@ I’ll be hosting a MAJOR <strong>*GIVEAWAY tomorrow morning – 2sec February 2
 *It’s real. It’s happening*
 *Let’s make it special ✨*
       </div>
+      <button class="share-btn">
+        <i data-lucide="share-2" size="18"></i> Share to WhatsApp Status
+      </button>
     </div>
 
-    <div class="task-card">
-        <div class="task-num">!</div>
-        <div><h4>Previous Update</h4><p>Verification process is now 2x faster.</p></div>
+    <div class="news-item">
+      <div class="news-icon"><i data-lucide="shield-check"></i></div>
+      <div class="news-content">
+        <h4>Verification Success</h4>
+        <p>Over 1,200 accounts were verified this morning. Check your task status to see if you're eligible for the next draw!</p>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-icon"><i data-lucide="users"></i></div>
+      <div class="news-content">
+        <h4>Community Growth</h4>
+        <p>We just hit a new milestone! Welcome to all the new members. Remember to complete all 10 tasks to qualify for gifts.</p>
+      </div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-icon"><i data-lucide="zap"></i></div>
+      <div class="news-content">
+        <h4>Instant Payment Active</h4>
+        <p>Our payment gateway is now live for instant transfers. Winners will receive their ₦10,000 slots within 5 minutes of approval.</p>
+      </div>
     </div>
   </div>
 
-  <div id="tasks" class="page">
-    <div class="header"><h2>Qualification<br><span>Tasks ✅</span></h2></div>
-    <div id="taskGrid"></div>
-  </div>
+  <div id="tasks" class="page"><div class="header"><h2>Qualification<br><span>Tasks ✅</span></h2></div></div>
+  <div id="winners" class="page"><div class="header"><h2>Hall of<br><span>Winners 🏆</span></h2></div></div>
 
-  <div id="winners" class="page">
-    <div class="header"><h2>Hall of<br><span>Winners 🏆</span></h2></div>
-    <div id="winnerGrid"></div>
-  </div>
-
-</div>
-
-<div id="taskModal" onclick="closeModal()">
-  <div class="modal-content" onclick="event.stopPropagation()">
-    <h3 id="mTitle"></h3>
-    <p id="mDesc" style="color:var(--text-muted); line-height:1.5; margin-top:10px;"></p>
-    <button class="modal-btn" onclick="closeModal()">I Understand</button>
-  </div>
 </div>
 
 <nav class="bottom-nav">
-  <button class="nav-btn active" onclick="openPage('home', this)"><i data-lucide="home"></i><span>Home</span></button>
-  <button class="nav-btn" onclick="openPage('news', this)"><i data-lucide="megaphone"></i><span>News</span></button>
+  <button class="nav-btn" onclick="openPage('home', this)"><i data-lucide="home"></i><span>Home</span></button>
+  <button class="nav-btn active" onclick="openPage('news', this)"><i data-lucide="megaphone"></i><span>News</span></button>
   <button class="nav-btn" onclick="openPage('tasks', this)"><i data-lucide="list-checks"></i><span>Tasks</span></button>
   <button class="nav-btn" onclick="openPage('winners', this)"><i data-lucide="trophy"></i><span>Winners</span></button>
 </nav>
 
 <script>
 lucide.createIcons();
-
-// Tasks Data
-const taskData = [
-  { t: "Join WhatsApp", d: "Join the official community group to receive live updates." },
-  { t: "Join Telegram", d: "Subscribe to our channel for exclusive winner announcements." },
-  { t: "Share to 50 Friends", d: "Forward the invite link to 50 friends. We will verify via names." },
-  { t: "Daily Check-in", d: "Open this app for 3 consecutive days to prove activity." },
-  { t: "Watch Tutorial", d: "Watch the 60-second video on how to claim your gift safely." },
-  { t: "Submit Username", d: "Enter your Telegram/WhatsApp username for verification." },
-  { t: "Verify Phone", d: "Ensure your registered number matches your payment account." },
-  { t: "Security Setup", d: "Enable 2FA on your social accounts for safety." },
-  { t: "Profile Completion", d: "Upload a profile picture and fill out your location." },
-  { t: "Final Review", d: "Click to submit all completed tasks for final approval." }
-];
-
-const taskGrid = document.getElementById('taskGrid');
-taskData.forEach((task, i) => {
-  taskGrid.innerHTML += `
-    <div class="task-card" onclick="openModal('${task.t}', '${task.d}')">
-      <div class="task-num">${i+1}</div>
-      <div><h4>${task.t}</h4><p>Click to read more</p></div>
-      <i data-lucide="chevron-right" size="18" style="margin-left:auto; color:#cbd5e1"></i>
-    </div>`;
-});
-
-// Giveaway Slots (10)
-const giveawayGrid = document.getElementById('giveawayGrid');
-for (let i = 1; i <= 10; i++) {
-  const isLive = i <= 3;
-  giveawayGrid.innerHTML += `
-    <div class="giveaway-item">
-      <div><h4>Slot #${i}</h4><p>₦10,000 Daily Slot</p></div>
-      <span class="status-pill ${isLive ? 'live' : 'upcoming'}">${isLive ? 'LIVE' : 'SOON'}</span>
-    </div>`;
-}
 
 function openPage(id, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -199,15 +172,6 @@ function openPage(id, btn) {
   btn.classList.add('active');
   window.scrollTo(0,0);
 }
-
-function openModal(t, d) {
-  document.getElementById('mTitle').innerText = t;
-  document.getElementById('mDesc').innerText = d;
-  document.getElementById('taskModal').style.display = 'flex';
-  lucide.createIcons();
-}
-
-function closeModal() { document.getElementById('taskModal').style.display = 'none'; }
 </script>
 </body>
 </html>
